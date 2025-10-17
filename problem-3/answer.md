@@ -96,7 +96,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >  formatted: string;
 >}
 
->#1 interface FormattedWalletBalance is incorrect, should extends from interface WalletBalance. Should update below:
+>#1 interface `FormattedWalletBalance` is incorrect, should extends from interface `WalletBalance`. Should update below:
 
 >```javascript
 >interface FormattedWalletBalance extends WalletBalance {
@@ -107,14 +107,15 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >```javascript
 > interface Props extends BoxProps {}
 >```
+>#2 `BoxProps` used in this line but not declared
 
->#2 BoxProps used in this line but not declared
 
 >#3
 >```javascript
 >const { children, ...rest } = props;
 
->#3 "children" declared but not used in this code
+>#3 `children` declared but not used in this code
+
 
 >#4
 >```javascript
@@ -135,12 +136,12 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >	  }
 >}
 
->#4 blockchain: any => need to define specific type for blockchain, should restrict use any
->#4 should define type for blockchain 
-
+>#4 `blockchain: any` => need to define specific type for blockchain, should restrict use any
+>#4 should define type for `blockchain`
 >#4
 >```javascript
 >type blockchain ='Osmosis' | 'Ethereum' | 'Arbitrum' | 'Zilliqa' | 'Neo' | string;
+
 
 >#5
 >```javascript
@@ -151,4 +152,31 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > }
 > return false
 
->#5 maybe this logic incorrect, balance.amount <= 0 should be return false, and finally it will return true
+>#5 `lhsPriority` not exists in code
+>#5 maybe this logic incorrect, `balance.amount <= 0` should be `return false`, and finally it will `return true`
+
+
+>#6
+>```javascript
+>const formattedBalances = sortedBalances.map((balance: WalletBalance) => {
+>    return {
+>      ...balance,
+>      formatted: balance.amount.toFixed()
+>    }
+>})
+
+>#6
+> `formattedBalances` declared but not used in code
+
+
+>#7
+>```javascript
+><WalletRow 
+>     className={classes.row}
+>     key={index}
+>     amount={balance.amount}
+>     usdValue={usdValue}
+>     formattedAmount={balance.formatted}
+>/>
+
+>#7 `key` use `index` is incorrect, should use `balance.currency` for `key`
