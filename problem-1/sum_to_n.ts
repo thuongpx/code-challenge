@@ -14,4 +14,9 @@ var sum_to_n_b = function (n: number) {
   return sum;
 };
 
-var sum_to_n_c = function (n: number) {};
+var sum_to_n_c = function (n: number) {
+  let sum = 0;
+  if (n === 0) return 0;
+  sum = n + sum_to_n_c(n - 1);
+  return sum;
+};

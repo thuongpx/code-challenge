@@ -48,18 +48,22 @@ function App() {
 
   const convertedValue = () => {
     let newData: Record<string, number> = {};
+
     if (data) {
       newData = Object.fromEntries(
         data.map((item: CurrencyProps) => [item.currency, item.price])
       );
     }
+
     const { fromCurrency, toCurrency, amount } = conversion;
 
     const fromPrice = newData[fromCurrency];
     const toPrice = newData[toCurrency];
+
     if (amount === 0) {
       return 0;
     }
+
     if (amount > 0 && fromPrice != null && toPrice != null && toPrice !== 0) {
       const result = amount * (fromPrice / toPrice);
       return result;
