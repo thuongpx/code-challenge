@@ -84,4 +84,66 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 ```
 
 # Answer:
+>```javascript
+>interface WalletBalance {
+>  currency: string;
+>  amount: number;
+>}
+>interface FormattedWalletBalance {
+>  currency: string;
+>  amount: number;
+>  formatted: string;
+>}
 
+> interface FormattedWalletBalance is , should extends from interface WalletBalance. Should update below:
+
+>```javascript
+>interface FormattedWalletBalance extends WalletBalance {
+> formatted: string;
+>}
+
+
+>```javascript
+> interface Props extends BoxProps {}
+>```
+
+> BoxProps used in this line but not declared
+
+>```javascript
+>const { children, ...rest } = props;
+
+> children declared but not used in this code
+
+>```javascript
+>const getPriority = (blockchain: any): number => {
+>	  switch (blockchain) {
+>	    case 'Osmosis':
+>	      return 100
+>	    case 'Ethereum':
+>	      return 50
+>	    case 'Arbitrum':
+>	      return 30
+>	    case 'Zilliqa':
+>	      return 20
+>	    case 'Neo':
+>	      return 20
+>	    default:
+>	      return -99
+>	  }
+>}
+
+> blockchain: any => need to define specific type for blockchain, should restrict use any
+> should define type for blockchain 
+
+>```javascript
+>type blockchain ='Osmosis' | 'Ethereum' | 'Arbitrum' | 'Zilliqa' | 'Neo' | string;
+
+>```javascript
+> if (lhsPriority > -99) {
+>   if (balance.amount <= 0) {
+>    return true;
+>	}
+> }
+> return false
+
+> maybe this logic incorrect, balance.amount <= 0 should be return false, and finally it will return true
