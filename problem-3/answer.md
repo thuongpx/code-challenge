@@ -1,5 +1,5 @@
 # List out the computational inefficiencies and anti-patterns found in the code block below
-
+```
 interface WalletBalance {
   currency: string;
   amount: number;
@@ -81,7 +81,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
     </div>
   )
 }
-
+```
 
 # Answer:
 
