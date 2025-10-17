@@ -1,5 +1,5 @@
 # List out the computational inefficiencies and anti-patterns found in the code block below
-```
+```javascript
 interface WalletBalance {
   currency: string;
   amount: number;
