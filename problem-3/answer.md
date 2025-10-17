@@ -84,6 +84,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 ```
 
 # Answer:
+>#1
 >```javascript
 >interface WalletBalance {
 >  currency: string;
@@ -95,25 +96,27 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >  formatted: string;
 >}
 
-> interface FormattedWalletBalance is , should extends from interface WalletBalance. Should update below:
+>#1 interface FormattedWalletBalance is incorrect, should extends from interface WalletBalance. Should update below:
 
 >```javascript
 >interface FormattedWalletBalance extends WalletBalance {
 > formatted: string;
 >}
 
-
+>#2
 >```javascript
 > interface Props extends BoxProps {}
 >```
 
-> BoxProps used in this line but not declared
+>#2 BoxProps used in this line but not declared
 
+>#3
 >```javascript
 >const { children, ...rest } = props;
 
-> children declared but not used in this code
+>#3 "children" declared but not used in this code
 
+>#4
 >```javascript
 >const getPriority = (blockchain: any): number => {
 >	  switch (blockchain) {
@@ -132,12 +135,14 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >	  }
 >}
 
-> blockchain: any => need to define specific type for blockchain, should restrict use any
-> should define type for blockchain 
+>#4 blockchain: any => need to define specific type for blockchain, should restrict use any
+>#4 should define type for blockchain 
 
+>#4
 >```javascript
 >type blockchain ='Osmosis' | 'Ethereum' | 'Arbitrum' | 'Zilliqa' | 'Neo' | string;
 
+>#5
 >```javascript
 > if (lhsPriority > -99) {
 >   if (balance.amount <= 0) {
@@ -146,4 +151,4 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > }
 > return false
 
-> maybe this logic incorrect, balance.amount <= 0 should be return false, and finally it will return true
+>#5 maybe this logic incorrect, balance.amount <= 0 should be return false, and finally it will return true
