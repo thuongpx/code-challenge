@@ -98,7 +98,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > }
 > ```
 
-> #1 interface `FormattedWalletBalance` is incorrect, should extends from interface `WalletBalance`. Should update below:
+> interface `FormattedWalletBalance` is incorrect, should extends from interface `WalletBalance`. Should update below:
 
 > ```javascript
 > interface FormattedWalletBalance extends WalletBalance {
@@ -112,7 +112,8 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > interface Props extends BoxProps {}
 > ```
 >
-> #2 `BoxProps` used in this line but not declared
+> `BoxProps` used in this line but not declared
+
 
 > #3
 >
@@ -120,7 +121,8 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > const { children, ...rest } = props;
 > ```
 
-> #3 `children` declared but not used in this code
+> `children` declared but not used in this code
+
 
 > #4
 >
@@ -143,9 +145,9 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > };
 > ```
 
-> #4 `blockchain: any` => need to define specific type for blockchain, should restrict use any
-> #4 should define type for `blockchain`
-> #4
+> `blockchain: any` => need to define specific type for blockchain, should restrict use any
+> should define type for `blockchain`
+>
 >
 > ```javascript
 > type Blockchain =
@@ -157,8 +159,8 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 >   | string;
 > ```
 
+
 > #5
->
 > ```javascript
 > if (lhsPriority > -99) {
 >   if (balance.amount <= 0) {
@@ -168,11 +170,11 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > return false;
 > ```
 
-> #5 `lhsPriority` not exists in code
-> #5 maybe this logic incorrect, `balance.amount <= 0` should be `return false`, and finally it will `return true`
+>`lhsPriority` not exists in code
+> maybe this logic incorrect, `balance.amount <= 0` should be `return false`, and finally it will `return true`
+
 
 > #6
->
 > ```javascript
 > const formattedBalances = sortedBalances.map((balance: WalletBalance) => {
 >   return {
@@ -182,11 +184,10 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > });
 > ```
 
-> #6
 > `formattedBalances` declared but not used in code
 
+
 > #7
->
 > ```javascript
 > <WalletRow
 >   className={classes.row}
@@ -197,10 +198,10 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > />
 > ```
 
-> #7 `key` use `index` is incorrect, should use `balance.currency` for `key`
+>`key` use `index` is incorrect, should use `balance.currency` for `key`
+
 
 #8
-
 > ```javascript
 > const sortedBalances = useMemo(() => {
 >   return balances
@@ -228,9 +229,9 @@ const WalletPage: React.FC<Props> = (props: Props) => {
 > });
 > ```
 
-> #8
 > should remove `prices` in dependecies of `sortedBalances()`.
 > It not necessary in this case, it only depends on value of `balances` and `balancePriority`
+
 
 # Refactor version code:
 
